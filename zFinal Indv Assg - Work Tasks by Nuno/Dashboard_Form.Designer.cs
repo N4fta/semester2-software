@@ -1,6 +1,6 @@
 ﻿namespace Final_Indv_Assg___Work_Tasks_by_Nuno
 {
-    partial class Form1
+    partial class Dashboard_Form
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,13 +30,14 @@
         {
             SuspendLayout();
             // 
-            // Form1
+            // Dashboard_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(600, 454);
-            Name = "Form1";
+            ClientSize = new Size(639, 454);
+            Name = "Dashboard_Form";
             Text = "Form1";
+            FormClosed += Dashboard_Form_FormClosed;
             ResumeLayout(false);
         }
 

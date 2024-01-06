@@ -1,3 +1,5 @@
+using Final_Indv_Assg___Work_Tasks_by_Nuno.Classes;
+
 namespace Final_Indv_Assg___Work_Tasks_by_Nuno
 {
     internal static class Program
@@ -11,7 +13,11 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            Company company = new Company();
+            company.ImportEmployees();
+
+            Application.Run(new Login_Form(company));
         }
     }
 }
