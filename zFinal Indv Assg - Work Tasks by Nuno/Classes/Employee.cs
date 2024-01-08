@@ -21,11 +21,11 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
         private string _email;
         private string _password;
 
-        public Employee()
+        public Employee(string email, string password)
         {
             _id = _idSeeder++;
-            _email = "test@gmail.com";
-            _password = "password";
+            _email = email;
+            _password = password;
         }
         public Employee(string ssn, string firstName, string lastName, string gender, string streetName, int streetNumber, string zipCode, string city, string email, string password)
         {
@@ -54,7 +54,8 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
         public string Password { set => _password = value; }
         public CompanyTask[] GetTasks(List<CompanyTask> tasks, string filter = "")
         {
-            return tasks.Where(task => task.ToString().Contains(filter)).ToArray();
+            var result = tasks.Where(task => task.ToString().Contains(filter)).ToArray();
+            return result.Where(task => task.Employees.Contains(this)).ToArray();
         }
         public bool CheckPassword(string password)
         {

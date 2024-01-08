@@ -16,8 +16,8 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
 
         public string Name { get => _name; set => _name = value; }
         public string Password { get => _password; set => _password = value; }
-        public List<Employee> Employees { get => _employees; set => _employees = value; }
-        public List<CompanyTask> CompanyTasks { get => _companyTasks; set => _companyTasks = value; }
+        public List<Employee> Employees { get => _employees; }
+        public List<CompanyTask> CompanyTasks { get => _companyTasks; }
 
         public bool CheckPassword(string password)
         {
@@ -28,13 +28,31 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
         {
             return false;
         }
+        public CompanyTask[] GetTasks(string title = "", Statuses status = Statuses.All, Departments department = Departments.All)
+        {
+            List<CompanyTask> result = _companyTasks;
+
+            if (!string.IsNullOrWhiteSpace(title))
+            {
+                result = result.Where(task => task.Title.Contains(title)).ToList();
+            }
+            if (status != Statuses.All)
+            {
+                result = result.Where(task => task.Status == status).ToList();
+            }
+            if (department != Departments.All)
+            {
+                result = result.Where(task => task.Departments != null && task.Departments.Contains(department)).ToList();
+            }
+            return result.ToArray();
+        }
         public bool ImportEmployees(string path = "")
         {
             if (path == "") path = MOCK_EMPLOYEE_DATA;
             if (File.Exists(path))
             {
                 //FileStream fileStream = new FileStream(path, FileAccess.Read);
-                _employees.Add(new Employee());
+                _employees.Add(new Employee("test@gmail.com", "12345"));
                 return true;
             }
             else

@@ -26,16 +26,10 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
 
             if (!string.IsNullOrWhiteSpace(tbxUsername.Text) && !string.IsNullOrWhiteSpace(tbxPassword.Text))
             {
-                if (tbxUsername.Text ==  "admin" && company.CheckPassword(tbxPassword.Text))
+                Employee? user = company.Employees.Find(employee => employee.Email == tbxUsername.Text);
+                if (tbxUsername.Text ==  company.Name && company.CheckPassword(tbxPassword.Text) || user != null && user.CheckPassword(tbxPassword.Text))
                 {
-                    Dashboard_Form dashboard_Form = new Dashboard_Form();
-                    dashboard_Form.Show();
-                    this.Hide();
-                    return;
-                }
-                if (company.Employees.Find(employee => employee.Email == tbxUsername.Text)!=null)
-                {
-                    Dashboard_Form dashboard_Form = new Dashboard_Form();
+                    Dashboard_Form dashboard_Form = new Dashboard_Form(company, tbxUsername.Text);
                     dashboard_Form.Show();
                     this.Hide();
                     return;

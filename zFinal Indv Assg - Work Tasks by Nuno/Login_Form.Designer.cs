@@ -138,7 +138,7 @@
             Font = new Font("Rockwell", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             MinimumSize = new Size(609, 358);
             Name = "Login_Form";
-            Text = "Login_Form";
+            Text = "Login";
             ((System.ComponentModel.ISupportInitialize)picBxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();

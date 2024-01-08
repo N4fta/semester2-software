@@ -8,6 +8,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
 {
     public enum Statuses
     {
+        All,
         Open,
         InProgress,
         Completed,
@@ -17,6 +18,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
 
     public enum Departments
     {
+        All,
         HumanResources,
         Marketing,
         Sales,

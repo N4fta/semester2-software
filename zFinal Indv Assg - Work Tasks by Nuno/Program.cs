@@ -16,6 +16,9 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
 
             Company company = new Company();
             company.ImportEmployees();
+            company.CompanyTasks.Add(new CompanyTask("Test1"));
+            company.CompanyTasks.Add(new CompanyTask("Test2"));
+            company.CompanyTasks.Add(new CompanyTask("Test3"));
 
             Application.Run(new Login_Form(company));
         }
