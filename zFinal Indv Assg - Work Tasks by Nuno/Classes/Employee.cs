@@ -37,7 +37,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
         public string Email { get; set; } = "";
         public Departments Department { get; set; } = Departments.All;
         [Ignore]
-        public string Password { get; set; } = "12345";
+        public string Password { get; set; } = "11111";
         [Ignore]
         public bool Admin { get; } = false;
 
@@ -50,7 +50,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
             Password = password;
             Admin = admin;
         }
-        public Employee(int id, string ssn, string first_name, string last_name, string gender, string street_name, int street_number, string zipcode, string city, string email, Departments Department)
+        public Employee(int id, string ssn, string first_name, string last_name, string gender, string street_name, int street_number, string zipcode, string city, string email, Departments Department, string password = "54321", bool admin = false)
         {
             if (_takenIDs.Contains(id)) MessageBox.Show("Failed to assign ID to new Employee");
             else
@@ -68,6 +68,8 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
             City = city;
             Email = email;
             this.Department = Department;
+            Password = password;
+            Admin = admin;
         }
         public static void ResetTakenIDs()
         {

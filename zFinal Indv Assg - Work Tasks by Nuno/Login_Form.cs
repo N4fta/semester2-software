@@ -22,35 +22,13 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             company = new Company();
-#pragma warning disable SYSLIB0011
-            if (true)  // Auto-load binary save
-            {
-                FileStream fs = null;
-                BinaryFormatter bf = null;
-                try
-                {
-                    fs = new FileStream("./Resources/AllMightySave.bf", FileMode.Open, FileAccess.Read);
-                    bf = new BinaryFormatter();
-                    company = (Company)bf.Deserialize(fs); // Function in Form since it assigns a new value to company
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Couldn't find saveFile");
-                }
-                finally
-                {
-                    if (fs != null) fs.Close();
-                }
-            }
-#pragma warning restore SYSLIB0011
-            // Auto-load example CSV
-            //company.ImportCSV();
-            company.Employees.Add(new Employee("Test", "Gmail", "test@gmail.com", "12345"));
+
+            // Auto-Load Method
+            company.Load("Database");
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
             if (!string.IsNullOrWhiteSpace(tbxUsername.Text) && !string.IsNullOrWhiteSpace(tbxPassword.Text))
             {
                 Employee? user = company.Employees.Find(employee => employee.Email == tbxUsername.Text);
@@ -65,6 +43,11 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             }
             MessageBox.Show("Incorrect username and/or password");
             return;
+        }
+
+        private void Login_Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            company.Save("Database");
         }
     }
 }

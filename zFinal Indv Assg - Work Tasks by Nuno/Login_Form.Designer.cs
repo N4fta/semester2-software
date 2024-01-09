@@ -139,6 +139,7 @@
             MinimumSize = new Size(609, 358);
             Name = "Login_Form";
             Text = "Login";
+            FormClosed += Login_Form_FormClosed;
             ((System.ComponentModel.ISupportInitialize)picBxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();

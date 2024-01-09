@@ -64,7 +64,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                company.ImportCSV(ofd.FileName);
+                company.Load("CSV", ofd.FileName);
             }
             else return;
         }
@@ -79,7 +79,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             };
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                company.ExportCSV(sfd.FileName);
+                company.Save("CSV", sfd.FileName);
             }
             else return;
 
@@ -95,7 +95,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             };
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                company.SaveAll(sfd.FileName);
+                company.Save("Binary", sfd.FileName);
             }
             else return;
 
