@@ -67,6 +67,7 @@
             txtBxTitle.Name = "txtBxTitle";
             txtBxTitle.Size = new Size(312, 25);
             txtBxTitle.TabIndex = 3;
+            txtBxTitle.TextChanged += btnFilter_Click;
             // 
             // btLoadAll
             // 
@@ -76,6 +77,7 @@
             btLoadAll.TabIndex = 6;
             btLoadAll.Text = "Load All";
             btLoadAll.UseVisualStyleBackColor = true;
+            btLoadAll.Click += btLoadAll_Click;
             // 
             // btSaveAll
             // 
@@ -85,37 +87,46 @@
             btSaveAll.TabIndex = 7;
             btSaveAll.Text = "Save All";
             btSaveAll.UseVisualStyleBackColor = true;
+            btSaveAll.Click += btSaveAll_Click;
             // 
             // chckBxTitle
             // 
             chckBxTitle.AutoSize = true;
+            chckBxTitle.Checked = true;
+            chckBxTitle.CheckState = CheckState.Checked;
             chckBxTitle.Location = new Point(21, 26);
             chckBxTitle.Name = "chckBxTitle";
             chckBxTitle.Size = new Size(60, 21);
             chckBxTitle.TabIndex = 10;
             chckBxTitle.Text = "Title";
             chckBxTitle.UseVisualStyleBackColor = true;
+            chckBxTitle.CheckedChanged += btnFilter_Click;
             // 
             // chckBxStatus
             // 
             chckBxStatus.AutoSize = true;
+            chckBxStatus.Checked = true;
+            chckBxStatus.CheckState = CheckState.Checked;
             chckBxStatus.Location = new Point(21, 55);
             chckBxStatus.Name = "chckBxStatus";
             chckBxStatus.Size = new Size(69, 21);
             chckBxStatus.TabIndex = 11;
             chckBxStatus.Text = "Status";
             chckBxStatus.UseVisualStyleBackColor = true;
+            chckBxStatus.CheckedChanged += btnFilter_Click;
             // 
             // chckBxDepartment
             // 
             chckBxDepartment.AutoSize = true;
+            chckBxDepartment.Checked = true;
+            chckBxDepartment.CheckState = CheckState.Checked;
             chckBxDepartment.Location = new Point(21, 84);
             chckBxDepartment.Name = "chckBxDepartment";
             chckBxDepartment.Size = new Size(111, 21);
             chckBxDepartment.TabIndex = 12;
             chckBxDepartment.Text = "Department";
             chckBxDepartment.UseVisualStyleBackColor = true;
-            chckBxDepartment.CheckedChanged += chckBxDepartment_CheckedChanged;
+            chckBxDepartment.CheckedChanged += btnFilter_Click;
             // 
             // gpBxFilters
             // 
@@ -140,27 +151,31 @@
             btFilter.Name = "btFilter";
             btFilter.Size = new Size(210, 23);
             btFilter.TabIndex = 15;
-            btFilter.Text = "Filter";
+            btFilter.Text = "Refresh";
             btFilter.UseVisualStyleBackColor = true;
             btFilter.Click += btnFilter_Click;
             // 
             // cbxDepartment
             // 
             cbxDepartment.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxDepartment.FormattingEnabled = true;
             cbxDepartment.Location = new Point(138, 82);
             cbxDepartment.Name = "cbxDepartment";
             cbxDepartment.Size = new Size(261, 25);
             cbxDepartment.TabIndex = 14;
+            cbxDepartment.TextChanged += btnFilter_Click;
             // 
             // cbxStatus
             // 
             cbxStatus.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxStatus.FormattingEnabled = true;
             cbxStatus.Location = new Point(96, 53);
             cbxStatus.Name = "cbxStatus";
             cbxStatus.Size = new Size(303, 25);
             cbxStatus.TabIndex = 13;
+            cbxStatus.TextChanged += btnFilter_Click;
             // 
             // gpBxFiles
             // 

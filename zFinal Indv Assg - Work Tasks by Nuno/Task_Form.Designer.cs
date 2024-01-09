@@ -48,6 +48,7 @@
             dtTmPckDeadline = new DateTimePicker();
             chkLstBxEmployees = new CheckedListBox();
             chkBxSales = new CheckBox();
+            btRemove = new Button();
             SuspendLayout();
             // 
             // btSave
@@ -70,6 +71,7 @@
             btCancel.TabIndex = 1;
             btCancel.Text = "Cancel";
             btCancel.UseVisualStyleBackColor = true;
+            btCancel.Click += btCancel_Click;
             // 
             // label1
             // 
@@ -208,6 +210,7 @@
             // 
             // cmbBxStatus
             // 
+            cmbBxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbBxStatus.FormattingEnabled = true;
             cmbBxStatus.Location = new Point(143, 136);
             cmbBxStatus.Name = "cmbBxStatus";
@@ -241,11 +244,23 @@
             chkBxSales.UseVisualStyleBackColor = true;
             chkBxSales.CheckedChanged += chkBxResearchAndDevelopment_CheckedChanged;
             // 
+            // btRemove
+            // 
+            btRemove.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btRemove.Location = new Point(286, 354);
+            btRemove.Name = "btRemove";
+            btRemove.Size = new Size(154, 33);
+            btRemove.TabIndex = 23;
+            btRemove.Text = "Remove";
+            btRemove.UseVisualStyleBackColor = true;
+            btRemove.Click += btRemove_Click;
+            // 
             // Task_Form
             // 
             AutoScaleDimensions = new SizeF(9F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 399);
+            Controls.Add(btRemove);
             Controls.Add(chkBxSales);
             Controls.Add(chkLstBxEmployees);
             Controls.Add(dtTmPckDeadline);
@@ -296,5 +311,6 @@
         private DateTimePicker dtTmPckDeadline;
         private CheckedListBox chkLstBxEmployees;
         private CheckBox chkBxSales;
+        private Button btRemove;
     }
 }

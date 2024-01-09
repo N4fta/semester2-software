@@ -6,44 +6,37 @@ using System.Threading.Tasks;
 
 namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
 {
+    [Serializable]
     public class CompanyTask
     {
-        private static int _idSeeder = 0;
-        private int _id;
-        private string _title;
-        private List<Departments> _departments;
-        private Statuses _status;
-        private string _deadline;
-        private List<Employee> _employees;
-        private string _description;
+        private static int[] _takenIDs = new int[150];
+        public int Id { get; set; } = 1;
+        public string Title { get; set; } = "";
+        public List<Departments> Departments { get; set; } = new List<Departments>();
+        public Statuses Status { get; set; } = Statuses.Open;
+        public DateTime Deadline { get; set; } = DateTime.UtcNow;
+        public List<Employee> Employees { get; set; } = new List<Employee>();
+        public string Description { get; set; } = "";
 
-        public CompanyTask(string title) 
-        { 
-            _id = _idSeeder++;
-            _title = title;
-        }
-        public CompanyTask(string title, List<Departments> departments, Statuses status, string deadline, List<Employee> employees, string description)
+        public CompanyTask(string title, List<Departments> departments, Statuses status, DateTime deadline, List<Employee> employees, string description)
         {
-            _id = _idSeeder++;
-            _title = title;
-            _departments = departments;
-            _status = status;
-            _deadline = deadline;
-            _employees = employees;
-            _description = description;
+            while (Array.IndexOf(_takenIDs, Id) != -1) Id++;
+            Title = title;
+            Departments = departments;
+            Status = status;
+            Deadline = deadline;
+            Employees = employees;
+            Description = description;
         }
 
-        public int Id { get => _id; set => _id = value; }
-        public string Title { get => _title; set => _title = value; }
-        public List<Departments> Departments { get => _departments; set => _departments = value; }
-        public Statuses Status { get => _status; set => _status = value; }
-        public string Deadline { get => _deadline; set => _deadline = value; }
-        public List<Employee> Employees { get => _employees; set => _employees = value; }
-        public string Description { get => _description; set => _description = value; }
+        public static void ResetTakenIDs()
+        {
+            for (int i = 0; i < 150; i++) _takenIDs[i] = 0;
+        }
 
         public override string? ToString()
         {
-            return _title;
+            return Title + " - " + Status.ToString();
         }
     }
 }

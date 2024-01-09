@@ -13,14 +13,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-
-            Company company = new Company();
-            company.ImportEmployees();
-            company.CompanyTasks.Add(new CompanyTask("Test1"));
-            company.CompanyTasks.Add(new CompanyTask("Test2"));
-            company.CompanyTasks.Add(new CompanyTask("Test3"));
-
-            Application.Run(new Login_Form(company));
+            Application.Run(new Login_Form());
         }
     }
 }

@@ -1,66 +1,88 @@
-﻿using System;
+﻿using CsvHelper.Configuration.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
 {
+    [Serializable]
     public class Employee
     {
-        private static int _idSeeder = 0;
-        private int _id;
-        private string _ssn;
-        private string _firstName;
-        private string _lastName;
-        private string _gender;
-        private string _streetName;
-        private int _streetNumber;
-        private string _zipCode;
-        private string _city;
-        private string _email;
-        private string _password;
+        [Ignore]
+        private static int[] _takenIDs = new int[150];
+        
+        [Name("id")]
+        public int Id { get; set; } = 1;
+        [Name("ssn")]
+        public string Ssn { get; set; } = "";
+        [Name("first_name")]
+        public string FirstName { get; set; } = "";
+        [Name("last_name")]
+        public string LastName { get; set; } = "";
+        [Name("gender")]
+        public string Gender { get; set; } = "";
+        [Name("street_name")]
+        public string StreetName { get; set; } = "";
+        [Name("street_number")]
+        public int StreetNumber { get; set; } = 0;
+        [Name("zipcode")]
+        public string ZipCode { get; set; } = "";
+        [Name("city")]
+        public string City { get; set; } = "";
+        [Name("email")]
+        public string Email { get; set; } = "";
+        public Departments Department { get; set; } = Departments.All;
+        [Ignore]
+        public string Password { get; set; } = "12345";
+        [Ignore]
+        public bool Admin { get; } = false;
 
-        public Employee(string email, string password)
+        public Employee(string first_name, string last_name, string email, string password, bool admin = false)
         {
-            _id = _idSeeder++;
-            _email = email;
-            _password = password;
+            while (Array.IndexOf(_takenIDs, Id) != -1) Id++;
+            FirstName = first_name;
+            LastName = last_name;
+            Email = email;
+            Password = password;
+            Admin = admin;
         }
-        public Employee(string ssn, string firstName, string lastName, string gender, string streetName, int streetNumber, string zipCode, string city, string email, string password)
+        public Employee(int id, string ssn, string first_name, string last_name, string gender, string street_name, int street_number, string zipcode, string city, string email, Departments Department)
         {
-            _id = _idSeeder++;
-            _ssn = ssn;
-            _firstName = firstName;
-            _lastName = lastName;
-            _gender = gender;
-            _streetName = streetName;
-            _streetNumber = streetNumber;
-            _zipCode = zipCode;
-            _city = city;
-            _email = email;
-            _password = password;
+            if (_takenIDs.Contains(id)) MessageBox.Show("Failed to assign ID to new Employee");
+            else
+            {
+                _takenIDs[Array.IndexOf(_takenIDs, 0)] = id;
+                Id = id;
+            }
+            Ssn = ssn;
+            FirstName = first_name;
+            LastName = last_name;
+            Gender = gender;
+            StreetName = street_name;
+            StreetNumber = street_number;
+            ZipCode = zipcode;
+            City = city;
+            Email = email;
+            this.Department = Department;
         }
-        public int Id { get => _id; }
-        public string Ssn { get => _ssn; set => _ssn = value; }
-        public string FirstName { get => _firstName; set => _firstName = value; }
-        public string LastName { get => _lastName; set => _lastName = value; }
-        public string Gender { get => _gender; set => _gender = value; }
-        public string StreetName { get => _streetName; set => _streetName = value; }
-        public int StreetNumber { get => _streetNumber; set => _streetNumber = value; }
-        public string ZipCode { get => _zipCode; set => _zipCode = value; }
-        public string City { get => _city; set => _city = value; }
-        public string Email { get => _email; set => _email = value; }
-        public string Password { set => _password = value; }
-        public CompanyTask[] GetTasks(List<CompanyTask> tasks, string filter = "")
+        public static void ResetTakenIDs()
         {
-            var result = tasks.Where(task => task.ToString().Contains(filter)).ToArray();
-            return result.Where(task => task.Employees.Contains(this)).ToArray();
+            for (int i = 0; i < 150; i++) _takenIDs[i] = 0;
         }
+
         public bool CheckPassword(string password)
         {
-            if (_password == password) return true;
+            if (Password == password) return true;
             else return false;
+        }
+
+        public override string ToString()
+        {
+            return $"{LastName}, {FirstName}";
         }
     }
 }

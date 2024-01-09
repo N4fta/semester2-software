@@ -23,6 +23,6 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
         Marketing,
         Sales,
         Support,
-        ResearchAndDevelopment
+        ResearchandDevelopment
     }
 }
