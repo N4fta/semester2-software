@@ -118,7 +118,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             }
             List<Employee> employees = new List<Employee>();
             foreach (Employee employee in chkLstBxEmployees.CheckedItems) employees.Add((Employee)employee);
-            CompanyTask newTask = new CompanyTask(txtBxTitle.Text, departments, (Statuses)cmbBxStatus.SelectedItem, dtTmPckDeadline.Value, employees, rchTxtBxDescription.Text);
+            CompanyTask newTask = new CompanyTask(txtBxTitle.Text, (Statuses)cmbBxStatus.SelectedItem, dtTmPckDeadline.Value, rchTxtBxDescription.Text, employees, departments);
             if (this.Text != "New Task")
             {
                 CompanyTask? oldTask = company.CompanyTasks.Find(x => x.Title == this.Text);
@@ -128,7 +128,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno
             else company.CompanyTasks.Add(newTask);
 
             // Generating string representation of new Task
-            string message = $"Title: ({newTask.Id}) {newTask.Title}" +
+            string message = $"Title: {newTask.Title}" +
                 $"\r\nStatus: {newTask.Status}" +
                 $"\r\nDeadline: {newTask.Deadline}" +
                 $"\r\nDescription: {newTask.Description}" +

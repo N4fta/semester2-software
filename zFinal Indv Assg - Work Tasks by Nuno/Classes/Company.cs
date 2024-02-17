@@ -26,6 +26,26 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
 
         private void LoadCSV(string filePath = "./Resources/MOCK_EMPLOYEE_DATA.csv")
         {
+            /* Not Completed
+            try
+            {
+                
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    HeaderValidated = null,
+                    MissingFieldFound = null
+                };
+                using (var reader = new StreamReader("./Resources/CompanyTasks.csv"))
+                using (var csv = new CsvReader(reader, config))
+                {
+                    CompanyTasks.Clear();
+                    CompanyTasks = csv.GetRecords<CompanyTask>().ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            } */
             try
             {
                 using (var reader = new StreamReader(filePath))
@@ -73,7 +93,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
                     MessageBox.Show("CSV file import Failed");
                 }
             }
-            if (Employees.Where(employee=>employee.Email == "admin").Count()==0) Employees.Add(new Employee("Admin", "", "admin", "admin", true));
+            if (Employees.Where(employee => employee.Email == "admin").Count() == 0) Employees.Add(new Employee("Admin", "", "admin", "admin", true));
         }
         private void SaveCSV(string filePath = "./Resources/MOCK_EMPLOYEE_DATA.csv")
         {
@@ -83,6 +103,11 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
                     csv.WriteRecords(Employees);
+                }
+                using (var writer = new StreamWriter("./Resources/CompanyTasks.csv"))
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(CompanyTasks);
                 }
             }
             catch
@@ -217,7 +242,7 @@ namespace Final_Indv_Assg___Work_Tasks_by_Nuno.Classes
             {
                 conn.Close();
             }
-            
+
         }
         private void SaveDatabase()
         {
