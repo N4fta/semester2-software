@@ -1,0 +1,16 @@
+Q1:
+ myShoesize is int type, can’t have mantissa
+ myShoesize already defined
+ double is already defined as a class
+
+Q2:  [7, 99, 4, 25]
+
+Q3:  div = 4; remainder = 17; x = 0; y = 17;
+
+Q4:  “Together we are rich !”
+
+Q5:  sum = 30
+
+Q6:  sum = 49
+
+Q7:  sum = “725”
